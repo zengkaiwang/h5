@@ -5,8 +5,42 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Document</title>
+  <style type="text/css">
+    .logo {
+        width: 200px;
+        height: 200px;
+        border-radius: 50%;
+        overflow: hidden;
+    }
+  </style>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
 </head>
 <body>
   <div>我是index02.html页面</div>
+  <!-- <textarea name="" rows="6" cols="16"></textarea><br /> -->
+  <textarea name="" rows="6" cols="16" style="display: none;"></textarea><br />
+  <button id="btn">点击弹出软键盘</button>
+
+  <div class="logo">
+      <img src="./img/yike-logo.png" alt="">
+  </div>
+
+  <script>
+      var ua = navigator.userAgent.toLowerCase();
+      if(/iphone|ipad|ipod/.test(ua)) {
+          var btn = document.getElementById('btn');
+          btn.addEventListener('touchstart', function() {
+              $('textarea').show();
+              document.getElementById('txt').focus();
+          })
+      } else if(/android/.test(ua)) {
+          $('button').click(function() {
+              $('textarea').show();
+              $("textarea").trigger("focus");
+          })
+
+      }
+  </script>
+</body>   
 </body>
 </html>
